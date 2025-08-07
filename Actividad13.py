@@ -87,7 +87,7 @@ def main():
             case "2":
                 empresa.buscar_repartidor()
             case "3":
-                print("Estadisticas")
+                empresa.estadisticas()
             case "4":
                 print("Saliendo del programa...")
                 exit()
