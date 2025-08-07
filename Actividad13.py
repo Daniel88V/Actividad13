@@ -69,6 +69,7 @@ class Empresa:
             total_paquetes += repartidor._paquetes
             promedio = total_paquetes / len(repartidor._nombre)
         print("------ESTADISTICAS------")
+        print(len(repartidor._nombre))
         print(f"El total de paquetes entregados es de: {total_paquetes}")
         print(f"El promedio de paquetes entregados es de: {promedio}")
 def main():
