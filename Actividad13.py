@@ -21,12 +21,16 @@ class Empresa:
         for i in range(cont):
             print(f"Repartidor #{i + 1}")
             while True:
-                nombre = input("Ingrese el nombre del repartidor: ").upper()
+                nombre = input("Ingrese el nombre del repartidor: ")
+                existe = False
                 for repartidor in self.repartidores:
-                    if repartidor.nombre.upper() == nombre.upper():
-                        print("Error, este repartidor ya existe")
-                    else:
+                    if repartidor._nombre.upper() == nombre.upper():
+                        existe = True
                         break
+                if existe:
+                    print("Error, este repartidor ya existe. Ingrese un nombre diferente.")
+                else:
+                    break
             while True:
                 paquetes_entregados = int(input("Ingrese la cantidad de paquetes entregados: "))
                 if paquetes_entregados < 0:
@@ -45,7 +49,7 @@ class Empresa:
     def buscar_repartidor(self):
         buscar = input("Ingrese el nombre del repartidor que desea buscar: ")
         for repartidor in self.repartidores:
-            if repartidor.nombre.upper() == buscar.upper():
+            if repartidor._nombre.upper() == buscar.upper():
                 print(repartidor)
                 return
             else:
@@ -60,14 +64,7 @@ class Empresa:
             print(repartidor)
 def main():
     empresa = Empresa()
-    try:
-        cont = int(input("Cuantos repartidores trabajaron hoy: "))
-        for i in range(cont):
-            print(f"Repartidor #{i + 1}")
-            empresa.registrar_repartidor()
-    except ValueError:
-        print("Error, la cantidad ingresada debe de ser positiva")
-        return
+    empresa.registrar_repartidor()
     while True:
         print("======MENÚ======")
         print("1. Listado de repartidores.")
