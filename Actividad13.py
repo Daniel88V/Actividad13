@@ -50,3 +50,42 @@ class Empresa:
                 return
             else:
                 print("Error, el repartidor no existe")
+    def listado(self):
+        print("------Lista de repartidores------")
+        for repartidor in self.repartidores:
+            print(repartidor)
+        print("------Lista descendente------")
+        ordenado = self.quick_sort(self.repartidores)
+        for repartidor in ordenado:
+            print(repartidor)
+def main():
+    empresa = Empresa()
+    try:
+        cont = int(input("Cuantos repartidores trabajaron hoy: "))
+        for i in range(cont):
+            print(f"Repartidor #{i + 1}")
+            empresa.registrar_repartidor()
+    except ValueError:
+        print("Error, la cantidad ingresada debe de ser positiva")
+        return
+    while True:
+        print("======MENÚ======")
+        print("1. Listado de repartidores.")
+        print("2. Buscar repartidor.")
+        print("3. Estadisticas.")
+        print("4. Salir.")
+        opcion = input("Seleccione una opción: ")
+        match opcion:
+            case "1":
+                empresa.listado()
+            case "2":
+                empresa.buscar_repartidor()
+            case "3":
+                print("Estadisticas")
+            case "4":
+                print("Saliendo del programa...")
+                exit()
+            case _:
+                print("Error, no existe la operacion")
+if __name__ == "__main__":
+    main()
