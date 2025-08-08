@@ -47,13 +47,19 @@ class Empresa:
             self.repartidores.append(nuevo_repartidor)
             print(f"Repartidor: {nombre} agregado exitosamente")
     def buscar_repartidor(self):
+        def busqueda_secuencial(lista, objetivo):
+            for i in range(len(lista)):
+                if lista[i].upper() == objetivo.upper():
+                    return i
+            return None
         buscar = input("Ingrese el nombre del repartidor que desea buscar: ")
-        for repartidor in self.repartidores:
-            if repartidor._nombre.upper() == buscar.upper():
-                print(repartidor)
-                return
-            else:
-                print("Error, el repartidor no existe")
+        repas = [repartidor._nombre for repartidor in self.repartidores]
+        lupa = busqueda_secuencial(repas, buscar)
+        if lupa is not None:
+            encontrado = self.repartidores[lupa]
+            print(f"Repartidor: {encontrado._nombre} | {encontrado._paquetes} paquetes | Zona: {encontrado._zona}")
+        else:
+            print("Repartidor no encontrado o inexistente")
     def listado(self):
         print("------Lista de repartidores------")
         for repartidor in self.repartidores:
@@ -95,5 +101,3 @@ def main():
                 print("Error, no existe la operacion")
 if __name__ == "__main__":
     main()
-
-
